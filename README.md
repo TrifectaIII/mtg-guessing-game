@@ -1,6 +1,6 @@
-# react-redux-template
+# mtg-guessing-game
 
-My personalized starting point for react-redux projects with TypeScript.
+A simple MTG card guessing game.
 
 ## Resources
 
