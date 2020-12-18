@@ -5,7 +5,7 @@ import {connect, ConnectedProps} from 'react-redux';
 import {GlobalState} from './redux/store';
 
 //get components
-import ExampleComponent from './components/ExampleComponent';
+import ChooseDifficulty from './components/ChooseDifficulty';
 
 import './App.css';
 
@@ -22,7 +22,7 @@ interface OwnProps {
 //mutate redux state to props, using ownprops if neccesary
 const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
     return {
-
+        playing: state.main.playing,
     }
 }
 
@@ -62,8 +62,8 @@ class App
         render = (): JSX.Element => {
             return (
                 <div>
-                    <h1>React-Redux Template</h1>
-                    <ExampleComponent/>
+                    <h1>MTG Guessing Game</h1>
+                    {!this.props.playing ? (<ChooseDifficulty/>) : null}
                 </div>
             );
         }

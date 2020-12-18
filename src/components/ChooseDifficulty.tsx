@@ -5,9 +5,12 @@ import {connect, ConnectedProps} from 'react-redux';
 import {GlobalState} from '../redux/store';
 
 //get dispatch actions
-import {add, subtract, change} from '../redux/reducers/exampleReducer/actions';
+import {selectDiff} from '../redux/reducers/main/actions';
 
-import './ExampleComponent.css';
+//get difficulty types
+import {Difficulties} from '../redux/reducers/main/actionTypes';
+
+import './ChooseDifficulty.css';
 
 
 // PROPS
@@ -22,13 +25,13 @@ interface OwnProps {
 //mutate redux state to props, using ownprops if neccesary
 const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
     return {
-        counter: state.exampleReducer.counter,
+        
     }
 }
 
 //add dispatch actions to props
 const mapDispatchToProps = {
-   add, subtract, change,
+   selectDiff,
 }
 
 //combine into connector to redux store, and get type
@@ -36,14 +39,14 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type ReduxProps = ConnectedProps<typeof connector>;
 
 //type of component props is intersection of non-redux and redux props
-type ExampleComponentProps = OwnProps & ReduxProps;
+type ChooseDifficultyProps = OwnProps & ReduxProps;
 
 
 //STATE
 ///////////////////////////////////////////////////////
 
 //type of internal component state
-interface ExampleComponentState {
+interface ChooseDifficultyState {
     inputValue: string
 }
 
@@ -52,17 +55,17 @@ interface ExampleComponentState {
 ///////////////////////////////////////////////////////
 
 //create component using types
-class ExampleComponent 
+class ChooseDifficulty 
     extends React.Component 
-    <ExampleComponentProps, ExampleComponentState> {
+    <ChooseDifficultyProps, ChooseDifficultyState> {
 
-        constructor (props: ExampleComponentProps) {
+        constructor (props: ChooseDifficultyProps) {
             super (props);
 
             //construc state using interface
             this.state = {
                 inputValue: '0',
-            } as ExampleComponentState;
+            } as ChooseDifficultyState;
         }
 
         //input event handler using React typing
@@ -73,20 +76,16 @@ class ExampleComponent
         render = (): JSX.Element => {
             return (
                 <div>
-
-                    <button onClick = {this.props.add}>Add</button><br/>
-
-                    <button onClick = {this.props.subtract}>Subtract</button><br/>
-
-                    <input type="number" value={this.state.inputValue} onChange={this.handleChange} />
-                    <button onClick={() => this.props.change(this.state.inputValue)}>Change</button>
-                    
-                    <h2>{this.props.counter}</h2>
-
+                    <h2>CHOOSE DIFFICULTY:</h2>
+                    <button onClick={()=>this.props.selectDiff(Difficulties.STANDARD)}>STANDARD</button>
+                    <br/>
+                    <button onClick={()=>this.props.selectDiff(Difficulties.MODERN)}>MODERN</button>
+                    <br/>
+                    <button onClick={()=>this.props.selectDiff(Difficulties.VINTAGE)}>VINTAGE</button>
                 </div>
             );
         }
 }
 
 //combine with connector and export
-export default connector(ExampleComponent);
+export default connector(ChooseDifficulty);

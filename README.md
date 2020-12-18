@@ -2,15 +2,6 @@
 
 A simple MTG card guessing game.
 
-## Resources
-
-[Redux: Usage with TypeScript](https://redux.js.org/recipes/usage-with-typescript)
-
-[React-Redux: Static Typing](https://react-redux.js.org/using-react-redux/static-typing)
-
-[React & Redux in TypeScript - Complete Guide by piotrwitek](https://github.com/piotrwitek/react-redux-typescript-guide/blob/master/README.md)
-
-
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

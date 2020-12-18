@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux'
-import exampleReducer from './exampleReducer'
+import main from './main'
 
 //combine all reducers and export
 export const globalReducer = combineReducers({
 
-    exampleReducer,
+    main,
     
 });
