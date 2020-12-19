@@ -2,13 +2,15 @@ import * as React from 'react';
 import {connect, ConnectedProps} from 'react-redux';
 
 //get global state from redux
-import {GlobalState} from './redux/store';
+import {GlobalState} from '../redux/store';
 
-//get components
-import ChooseDifficulty from './components/ChooseDifficulty';
-import LoadCard from './components/LoadCard';
+//get dispatch actions
+import {nextCard} from '../redux/reducers/game/actions';
 
-import './App.css';
+//get difficulty types
+import {Difficulties} from '../redux/reducers/main/actionTypes';
+
+import './LoadCard.css';
 
 
 // PROPS
@@ -23,14 +25,13 @@ interface OwnProps {
 //mutate redux state to props, using ownprops if neccesary
 const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
     return {
-        playing: state.main.playing,
-        cardName: state.game.cardName,
+        difficulty: state.main.difficulty,
     }
 }
 
-//add actions dispatch to props
+//add dispatch actions to props
 const mapDispatchToProps = {
-
+   nextCard,
 }
 
 //combine into connector to redux store, and get type
@@ -38,40 +39,42 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type ReduxProps = ConnectedProps<typeof connector>;
 
 //type of component props is intersection of non-redux and redux props
-type AppProps = OwnProps & ReduxProps;
+type LoadCardProps = OwnProps & ReduxProps;
 
 
 //STATE
 ///////////////////////////////////////////////////////
 
 //type of internal component state
-interface AppState {
-
+interface LoadCardState {
+    
 }
 
 
 //CLASS
 ///////////////////////////////////////////////////////
 
-class App 
-    extends React.Component
-    <AppProps, AppState> {
+//create component using types
+class LoadCard 
+    extends React.Component 
+    <LoadCardProps, LoadCardState> {
 
-        // constructor (props: AppProps) {
+        // constructor (props: LoadCardProps) {
         //     super (props);
         // }
 
-        render = (): JSX.Element => {
+        componentDidMount = (): void => {
+            // fetch()
+        }
 
+        render = (): JSX.Element => {
             return (
                 <div>
-                    <h1>MTG Guessing Game</h1>
-                    {!this.props.playing ? (<ChooseDifficulty/>) : null}
-                    {this.props.playing && !this.props.cardName ? (<LoadCard/>) : null} 
+                    <h2>Loading Next Card...</h2>
                 </div>
             );
         }
 }
 
 //combine with connector and export
-export default connector(App);
+export default connector(LoadCard);
