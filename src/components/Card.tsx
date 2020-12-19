@@ -5,12 +5,12 @@ import {connect, ConnectedProps} from 'react-redux';
 import {GlobalState} from '../redux/store';
 
 //get dispatch actions
-import {nextCard} from '../redux/reducers/game/actions';
+import {guessCard} from '../redux/reducers/game/actions';
 
 //get difficulty types
 import {Difficulties} from '../redux/reducers/main/actionTypes';
 
-import './LoadCard.css';
+import './Card.css';
 
 
 // PROPS
@@ -25,13 +25,13 @@ interface OwnProps {
 //mutate redux state to props, using ownprops if neccesary
 const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
     return {
-        difficulty: state.main.difficulty,
+        cardSFID: state.game.cardSFID,
     }
 }
 
 //add dispatch actions to props
 const mapDispatchToProps = {
-   nextCard,
+   guessCard,
 }
 
 //combine into connector to redux store, and get type
@@ -39,14 +39,14 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type ReduxProps = ConnectedProps<typeof connector>;
 
 //type of component props is intersection of non-redux and redux props
-type LoadCardProps = OwnProps & ReduxProps;
+type CardProps = OwnProps & ReduxProps;
 
 
 //STATE
 ///////////////////////////////////////////////////////
 
 //type of internal component state
-interface LoadCardState {
+interface CardState {
     
 }
 
@@ -55,52 +55,22 @@ interface LoadCardState {
 ///////////////////////////////////////////////////////
 
 //create component using types
-class LoadCard 
+class Card 
     extends React.Component 
-    <LoadCardProps, LoadCardState> {
+    <CardProps, CardState> {
 
-        // constructor (props: LoadCardProps) {
+        // constructor (props: CardProps) {
         //     super (props);
         // }
-
-        componentDidMount = (): void => {
-
-            var qstring: string = '';
-            switch (this.props.difficulty) {
-
-                case Difficulties.STANDARD:
-                    qstring = 'standard';
-                    break;
-                
-                case Difficulties.MODERN:
-                    qstring = 'modern';
-                    break;
-
-                case Difficulties.VINTAGE:
-                    qstring = 'vintage';
-                    break;
-                
-                default:
-                    return;
-            }
-
-            var fstring: string = `https://api.scryfall.com/cards/random?q=legal%3A${qstring}`;
-
-            fetch(fstring)
-                .then ((response: any): Promise<any> => response.json())
-                .then ((json: any) => {
-                    this.props.nextCard(json.name, json.id);
-                });
-        }
 
         render = (): JSX.Element => {
             return (
                 <div>
-                    <h2>Loading Next Card...</h2>
+                    <img src={'https://api.scryfall.com/cards/' + this.props.cardSFID + '/?format=image&version=art_crop'}/>
                 </div>
             );
         }
 }
 
 //combine with connector and export
-export default connector(LoadCard);
+export default connector(Card);
