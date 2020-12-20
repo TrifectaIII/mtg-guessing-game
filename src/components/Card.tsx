@@ -7,8 +7,8 @@ import {GlobalState} from '../redux/store';
 //get dispatch actions
 import {guessCard} from '../redux/reducers/game/actions';
 
-//get difficulty types
-import {Difficulties} from '../redux/reducers/main/actionTypes';
+//get type of scryfall cards
+import {ScryfallCard} from '../scryfall';
 
 import './Card.css';
 
@@ -25,7 +25,7 @@ interface OwnProps {
 //mutate redux state to props, using ownprops if neccesary
 const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
     return {
-        imgURL: `https://api.scryfall.com/cards/${state.game.cardSFID}/?format=image&version=art_crop`,
+        card: state.game.card,
     }
 }
 
@@ -47,7 +47,7 @@ type CardProps = OwnProps & ReduxProps;
 
 //type of internal component state
 interface CardState {
-
+    cardNames: string[]
 }
 
 
@@ -59,18 +59,61 @@ class Card
     extends React.Component 
     <CardProps, CardState> {
 
-        // constructor (props: CardProps) {
-        //     super (props);
-        // }
+        constructor (props: CardProps) {
+            super (props);
 
+            this.state = {
+                cardNames: [],
+            } as CardState
+        }
+
+        componentDidMount = (): void => {
+
+            if (!this.props.card) return;
+
+            this.setState({cardNames: [this.props.card.name]});
+
+            var setcode: string = this.props.card.set;
+            var fetchURL: string = `https://api.scryfall.com/cards/random?q=is%3Abooster+set%3A${setcode}`;
+
+            for (let i = 0; i < 3; i++) {
+                fetch(fetchURL)
+                    .then((response): Promise<ScryfallCard> => response.json())
+                    .then((card: ScryfallCard) => {
+                        this.setState({
+                            cardNames: shuffle(this.state.cardNames.concat([card.name])),
+                        });
+                    });
+            }
+        }
+ 
         render = (): JSX.Element => {
+            
+            var imgURL: string | undefined = 
+                this.props.card ? 
+                `https://api.scryfall.com/cards/${this.props.card.id}/?format=image&version=art_crop` : 
+                undefined;
 
             return (
                 <div>
                     <img 
-                        src={this.props.imgURL}
+                        src={imgURL}
                         alt="The card art"
                     />
+                    {this.state.cardNames.length === 4 ? 
+                    (this.state.cardNames.map(
+                        (name: string): JSX.Element => {
+                            return (
+                                <button 
+                                    key={name} 
+                                    onClick={()=>this.props.guessCard(name)}
+                                >
+                                    {name}
+                                </button>
+                            )
+                        }
+                    ))
+                    : null}
                 </div>
             );
         }
@@ -78,3 +121,14 @@ class Card
 
 //combine with connector and export
 export default connector(Card);
+
+
+//helper function to allow array shuffling
+function shuffle (array: any[]): any[] {
+    var copy: any[] = [...array];
+    for (let i: number = copy.length - 1; i > 0; i--) {
+        const j: number = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+}

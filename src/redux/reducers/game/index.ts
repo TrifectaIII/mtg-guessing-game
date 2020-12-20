@@ -1,17 +1,15 @@
 import {GUESS_CARD, NEXT_CARD, GameActionTypes} from './actionTypes'
-
+import {ScryfallCard} from '../../../scryfall';
 
 //type of state slice
 interface GameState {
-    cardName: string | null,
-    cardSFID: string | null,
-    score: number,
+    card: ScryfallCard | null
+    score: number
 }
 
 //starting state
 const initialState: GameState = {
-    cardName: null,
-    cardSFID: null,
+    card: null,
     score: 0,
 }
 
@@ -26,32 +24,28 @@ export default
 
         case GUESS_CARD:
             //if guess is right
-            if (state.cardName && state.cardName === action.cardName) {
+            if (state.card && state.card.name === action.cardName) {
                 return {
                     ...state,
                     score: state.score + 1,
-                    cardName: null,
-                    cardSFID: null,
+                    card: null,
                 }
             }
             //if guess is wrong
-            else if (state.cardName) {
+            else if (state.card) {
                 return {
                     ...state,
-                    score: state.score - 1,
-                    cardName: null,
-                    cardSFID: null,
+                    card: null,
                 }
             }
             return state;
 
         case NEXT_CARD:
             //only change state if next card is required
-            if (!state.cardName) {
+            if (!state.card) {
                 return {
                     ...state,
-                    cardName: action.cardName,
-                    cardSFID: action.cardSFID,
+                    card: action.card,
                 }
             }
             return state;

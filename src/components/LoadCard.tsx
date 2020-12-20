@@ -10,15 +10,10 @@ import {nextCard} from '../redux/reducers/game/actions';
 //get difficulty types
 import {Difficulties} from '../redux/reducers/main/actionTypes';
 
+//get type of scryfall cards
+import {ScryfallCard} from '../scryfall';
+
 import './LoadCard.css';
-
-
-//Type of Scryfall API Card Objects
-interface SFCard {
-    name: string,
-    id: string,
-    [key: string]: any,//allow any other properties it comes with
-}
 
 
 // PROPS
@@ -94,12 +89,12 @@ class LoadCard
             }
 
             //generate api call
-            var fetchURL: string = `https://api.scryfall.com/cards/random?q=legal%3A${queryFormat}`;
+            var fetchURL: string = `https://api.scryfall.com/cards/random?q=is%3Abooster+legal%3A${queryFormat}`;
 
             //make api call
             fetch(fetchURL)
-                .then ((response): Promise<SFCard> => response.json())
-                .then ((card: SFCard) => this.props.nextCard(card.name, card.id));
+                .then ((response: any): Promise<ScryfallCard> => response.json())
+                .then ((card: ScryfallCard) => this.props.nextCard(card));
         }
 
         render = (): JSX.Element => {

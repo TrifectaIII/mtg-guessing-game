@@ -25,7 +25,7 @@ interface OwnProps {
 const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
     return {
         playing: state.main.playing,
-        cardName: state.game.cardName,
+        card: state.game.card,
     }
 }
 
@@ -68,8 +68,8 @@ class App
                 <div>
                     <h1>MTG Guessing Game</h1>
                     {!this.props.playing ? (<ChooseDifficulty/>) : null}
-                    {this.props.playing && !this.props.cardName ? (<LoadCard/>) : null} 
-                    {this.props.playing && this.props.cardName ? (<Card/>) : null} 
+                    {this.props.playing && !this.props.card ? (<LoadCard/>) : null} 
+                    {this.props.playing && this.props.card ? (<Card/>) : null} 
                 </div>
             );
         }

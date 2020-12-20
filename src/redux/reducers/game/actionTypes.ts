@@ -1,3 +1,5 @@
+import {ScryfallCard} from '../../../scryfall';
+
 //types for actions
 export const GUESS_CARD = 'game/GuessCard';
 export const NEXT_CARD = 'game/NextCard';
@@ -10,8 +12,7 @@ interface GuessCard {
 
 interface NextCard {
     type: typeof NEXT_CARD
-    cardName: string
-    cardSFID: string
+    card: ScryfallCard
 }
 
 //union all action types
