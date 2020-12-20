@@ -13,6 +13,14 @@ import {Difficulties} from '../redux/reducers/main/actionTypes';
 import './LoadCard.css';
 
 
+//Type of Scryfall API Card Objects
+interface SFCard {
+    name: string,
+    id: string,
+    [key: string]: any,//allow any other properties it comes with
+}
+
+
 // PROPS
 ///////////////////////////////////////////////////////
 
@@ -65,32 +73,33 @@ class LoadCard
 
         componentDidMount = (): void => {
 
-            var qstring: string = '';
+            //difficulty determines sf api query
+            var queryFormat: string = '';
             switch (this.props.difficulty) {
 
                 case Difficulties.STANDARD:
-                    qstring = 'standard';
+                    queryFormat = 'standard';
                     break;
                 
                 case Difficulties.MODERN:
-                    qstring = 'modern';
+                    queryFormat = 'modern';
                     break;
 
                 case Difficulties.VINTAGE:
-                    qstring = 'vintage';
+                    queryFormat = 'vintage';
                     break;
                 
                 default:
                     return;
             }
 
-            var fstring: string = `https://api.scryfall.com/cards/random?q=legal%3A${qstring}`;
+            //generate api call
+            var fetchURL: string = `https://api.scryfall.com/cards/random?q=legal%3A${queryFormat}`;
 
-            fetch(fstring)
-                .then ((response: any): Promise<any> => response.json())
-                .then ((json: any) => {
-                    this.props.nextCard(json.name, json.id);
-                });
+            //make api call
+            fetch(fetchURL)
+                .then ((response): Promise<SFCard> => response.json())
+                .then ((card: SFCard) => this.props.nextCard(card.name, card.id));
         }
 
         render = (): JSX.Element => {

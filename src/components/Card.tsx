@@ -25,7 +25,7 @@ interface OwnProps {
 //mutate redux state to props, using ownprops if neccesary
 const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
     return {
-        cardSFID: state.game.cardSFID,
+        imgURL: `https://api.scryfall.com/cards/${state.game.cardSFID}/?format=image&version=art_crop`,
     }
 }
 
@@ -47,7 +47,7 @@ type CardProps = OwnProps & ReduxProps;
 
 //type of internal component state
 interface CardState {
-    
+
 }
 
 
@@ -64,9 +64,13 @@ class Card
         // }
 
         render = (): JSX.Element => {
+
             return (
                 <div>
-                    <img src={'https://api.scryfall.com/cards/' + this.props.cardSFID + '/?format=image&version=art_crop'}/>
+                    <img 
+                        src={this.props.imgURL}
+                        alt="The card art"
+                    />
                 </div>
             );
         }
