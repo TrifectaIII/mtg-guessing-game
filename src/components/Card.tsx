@@ -100,16 +100,21 @@ class Card
                         src={imgURL}
                         alt="The card art"
                     />
+                    <br/>
                     {this.state.cardNames.length === 4 ? 
                     (this.state.cardNames.map(
                         (name: string): JSX.Element => {
                             return (
+                                <>
                                 <button 
+                                    className="cardGuessButton"
                                     key={name} 
                                     onClick={()=>this.props.guessCard(name)}
                                 >
                                     {name}
                                 </button>
+                                <br/>
+                                </>
                             )
                         }
                     ))
