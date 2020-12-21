@@ -4,11 +4,11 @@ import {connect, ConnectedProps} from 'react-redux';
 //get global state from redux
 import {GlobalState} from '../redux/store';
 
-//get dispatch actions
-import {guessCard} from '../redux/reducers/game/actions';
-
 //get type of scryfall cards
 import {ScryfallCard} from '../scryfall';
+
+//get component
+import ChoiceButton from './ChoiceButton';
 
 import './Card.css';
 
@@ -31,7 +31,7 @@ const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
 
 //add dispatch actions to props
 const mapDispatchToProps = {
-   guessCard,
+
 }
 
 //combine into connector to redux store, and get type
@@ -74,7 +74,7 @@ class Card
             this.setState({cardNames: [this.props.card.name]});
 
             var setcode: string = this.props.card.set;
-            var fetchURL: string = `https://api.scryfall.com/cards/random?q=is%3Abooster+set%3A${setcode}`;
+            var fetchURL: string = `https://api.scryfall.com/cards/random?q=is:booster+set:${setcode}`;
 
             for (let i = 0; i < 3; i++) {
                 fetch(fetchURL)
@@ -102,23 +102,19 @@ class Card
                     />
                     <br/>
                     {this.state.cardNames.length === 4 ? 
-                    (this.state.cardNames.map(
-                        (name: string): JSX.Element => {
-                            return (
-                                <>
-                                <button 
-                                    className="cardGuessButton"
-                                    key={name} 
-                                    onClick={()=>this.props.guessCard(name)}
-                                >
-                                    {name}
-                                </button>
-                                <br/>
-                                </>
-                            )
-                        }
-                    ))
-                    : null}
+                        (this.state.cardNames.map(
+                            (name: string): JSX.Element => {
+                                return (
+                                    <ChoiceButton 
+                                        cardName={name}
+                                        key={name}
+                                    />
+                                )
+                            }
+                        ))
+                    :(
+                        <p>Loading Choices...</p>
+                    )}
                 </div>
             );
         }

@@ -89,7 +89,7 @@ class LoadCard
             }
 
             //generate api call
-            var fetchURL: string = `https://api.scryfall.com/cards/random?q=is%3Abooster+legal%3A${queryFormat}`;
+            var fetchURL: string = `https://api.scryfall.com/cards/random?q=is:booster+legal:${queryFormat}`;
 
             //make api call
             fetch(fetchURL)
