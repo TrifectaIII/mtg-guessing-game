@@ -7,7 +7,7 @@ import {GlobalState} from './redux/store';
 //get components
 import ChooseDifficulty from './components/ChooseDifficulty';
 import LoadCard from './components/LoadCard';
-import Card from './components/Card';
+import CardChoice from './components/CardChoice';
 
 import './App.css';
 
@@ -69,7 +69,7 @@ class App
                     <h1>MTG Guessing Game</h1>
                     {!this.props.playing ? (<ChooseDifficulty/>) : null}
                     {this.props.playing && !this.props.card ? (<LoadCard/>) : null} 
-                    {this.props.playing && this.props.card ? (<Card/>) : null} 
+                    {this.props.playing && this.props.card ? (<CardChoice/>) : null} 
                 </div>
             );
         }

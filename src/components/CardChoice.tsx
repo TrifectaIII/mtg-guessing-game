@@ -10,7 +10,11 @@ import {ScryfallCard} from '../scryfall';
 //get component
 import ChoiceButton from './ChoiceButton';
 
-import './Card.css';
+import './CardChoice.css';
+
+
+//all basic card types
+var cardtypes: string[] = ['Creature', 'Instant', 'Sorcery', 'Enchantment', 'Artifact', 'Land', 'Planeswalker'];
 
 
 // PROPS
@@ -39,14 +43,14 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type ReduxProps = ConnectedProps<typeof connector>;
 
 //type of component props is intersection of non-redux and redux props
-type CardProps = OwnProps & ReduxProps;
+type CardChoiceProps = OwnProps & ReduxProps;
 
 
 //STATE
 ///////////////////////////////////////////////////////
 
 //type of internal component state
-interface CardState {
+interface CardChoiceState {
     cardNames: string[]
 }
 
@@ -55,27 +59,42 @@ interface CardState {
 ///////////////////////////////////////////////////////
 
 //create component using types
-class Card 
+class CardChoice 
     extends React.Component 
-    <CardProps, CardState> {
+    <CardChoiceProps, CardChoiceState> {
 
-        constructor (props: CardProps) {
+        constructor (props: CardChoiceProps) {
             super (props);
 
             this.state = {
                 cardNames: [],
-            } as CardState
+            } as CardChoiceState
         }
 
         componentDidMount = (): void => {
 
             if (!this.props.card) return;
 
+            //add correct card to names
             this.setState({cardNames: [this.props.card.name]});
 
+            //get setcode from card obj
             var setcode: string = this.props.card.set;
-            var fetchURL: string = `https://api.scryfall.com/cards/random?q=is:booster+set:${setcode}`;
 
+            //find type of card from type line
+            var type: string | null = null;
+            cardtypes.some((cardtype: string): boolean => {
+                if (this.props.card?.type_line.includes(cardtype)) {
+                    type = cardtype.toLowerCase();
+                    return true
+                }
+                return false
+            });
+
+            //generate url for fetch
+            var fetchURL: string = `https://api.scryfall.com/cards/random?q=is:booster+set:${setcode}${(type ? `+type:${type}` : '')}`;
+
+            //fetch 3 more cards
             for (let i = 0; i < 3; i++) {
                 fetch(fetchURL)
                     .then((response): Promise<ScryfallCard> => response.json())
@@ -102,7 +121,7 @@ class Card
                     />
                     <br/>
                     {this.state.cardNames.length === 4 ? 
-                        (this.state.cardNames.map(
+                        (removeDuplicates(this.state.cardNames).map(
                             (name: string): JSX.Element => {
                                 return (
                                     <ChoiceButton 
@@ -121,7 +140,7 @@ class Card
 }
 
 //combine with connector and export
-export default connector(Card);
+export default connector(CardChoice);
 
 
 //helper function to allow array shuffling
@@ -132,4 +151,14 @@ function shuffle (array: any[]): any[] {
         [copy[i], copy[j]] = [copy[j], copy[i]];
     }
     return copy;
+}
+
+
+//helper function to remoe duplicates from an array
+function removeDuplicates (array: any[]): any[] {
+    var uniques: any[] = [];
+    array.forEach((elem) => {
+        if (!uniques.includes(elem)) uniques.push(elem);
+    })
+    return uniques;
 }
