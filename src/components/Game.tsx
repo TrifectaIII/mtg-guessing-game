@@ -2,13 +2,13 @@ import * as React from 'react';
 import {connect, ConnectedProps} from 'react-redux';
 
 //get global state from redux
-import {GlobalState} from './redux/store';
+import {GlobalState} from '../redux/store';
 
-//get components
-import ChooseDifficulty from './components/ChooseDifficulty';
-import Game from './components/Game';
+//get component
+import CardChoice from './CardChoice';
+import LoadCard from './LoadCard';
 
-import './App.css';
+import './Game.css';
 
 
 // PROPS
@@ -23,11 +23,12 @@ interface OwnProps {
 //mutate redux state to props, using ownprops if neccesary
 const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
     return {
-        playing: state.main.playing,
+        score: state.game.score,
+        card: state.game.card,
     }
 }
 
-//add actions dispatch to props
+//add dispatch actions to props
 const mapDispatchToProps = {
 
 }
@@ -37,14 +38,14 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type ReduxProps = ConnectedProps<typeof connector>;
 
 //type of component props is intersection of non-redux and redux props
-type AppProps = OwnProps & ReduxProps;
+type GameProps = OwnProps & ReduxProps;
 
 
 //STATE
 ///////////////////////////////////////////////////////
 
 //type of internal component state
-interface AppState {
+interface GameState {
 
 }
 
@@ -52,25 +53,26 @@ interface AppState {
 //CLASS
 ///////////////////////////////////////////////////////
 
-class App 
-    extends React.Component
-    <AppProps, AppState> {
+//create component using types
+class Game 
+    extends React.Component 
+    <GameProps, GameState> {
 
-        // constructor (props: AppProps) {
+        // constructor (props: GameProps) {
         //     super (props);
         // }
-
+ 
         render = (): JSX.Element => {
 
             return (
                 <div>
-                    <h1>MTG Guessing Game</h1>
-                    {!this.props.playing ? (<ChooseDifficulty/>) : null}
-                    {this.props.playing ? (<Game/>) : null}
+                   <h2>Score: {this.props.score}</h2>
+                   {!this.props.card ? (<LoadCard/>) : null} 
+                   {this.props.card ? (<CardChoice/>) : null} 
                 </div>
             );
         }
 }
 
 //combine with connector and export
-export default connector(App);
+export default connector(Game);
