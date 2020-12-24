@@ -1,16 +1,18 @@
-import {GUESS_CARD, NEXT_CARD, GameActionTypes} from './actionTypes'
+import {GUESS_CARD, NEXT_CARD, RESET_GAME, GameActionTypes} from './actionTypes'
 import {ScryfallCard} from '../../../scryfall';
 
 //type of state slice
 interface GameState {
     card: ScryfallCard | null
     score: number
+    wrong: boolean
 }
 
 //starting state
 const initialState: GameState = {
     card: null,
     score: 0,
+    wrong: false
 }
 
 //handle actions
@@ -35,7 +37,7 @@ export default
             else if (state.card) {
                 return {
                     ...state,
-                    card: null,
+                    wrong: true,
                 }
             }
             return state;
@@ -49,6 +51,9 @@ export default
                 }
             }
             return state;
+
+        case RESET_GAME:
+            return initialState;
 
         default:
             return state;

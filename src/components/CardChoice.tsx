@@ -100,7 +100,7 @@ class CardChoice
                     .then((response): Promise<ScryfallCard> => response.json())
                     .then((card: ScryfallCard) => {
                         this.setState({
-                            cardNames: shuffle(this.state.cardNames.concat([card.name])),
+                            cardNames: shuffle<string>(this.state.cardNames.concat([card.name])),
                         });
                     });
             }
@@ -121,7 +121,7 @@ class CardChoice
                     />
                     <br/>
                     {this.state.cardNames.length === 4 ? 
-                        (removeDuplicates(this.state.cardNames).map(
+                        (removeDuplicates<string>(this.state.cardNames).map(
                             (name: string): JSX.Element => {
                                 return (
                                     <ChoiceButton 
@@ -144,8 +144,8 @@ export default connector(CardChoice);
 
 
 //helper function to allow array shuffling
-function shuffle (array: any[]): any[] {
-    var copy: any[] = [...array];
+function shuffle <T> (array: T[]): T[] {
+    var copy: T[] = [...array];
     for (let i: number = copy.length - 1; i > 0; i--) {
         const j: number = Math.floor(Math.random() * (i + 1));
         [copy[i], copy[j]] = [copy[j], copy[i]];
@@ -155,8 +155,8 @@ function shuffle (array: any[]): any[] {
 
 
 //helper function to remoe duplicates from an array
-function removeDuplicates (array: any[]): any[] {
-    var uniques: any[] = [];
+function removeDuplicates <T> (array: T[]): T[] {
+    var uniques: T[] = [];
     array.forEach((elem) => {
         if (!uniques.includes(elem)) uniques.push(elem);
     })

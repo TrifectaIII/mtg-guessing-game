@@ -4,12 +4,11 @@ import {connect, ConnectedProps} from 'react-redux';
 //get global state from redux
 import {GlobalState} from '../redux/store';
 
-//get components
-import LoadCard from './LoadCard';
-import CardChoice from './CardChoice';
-import GameOver from './GameOver';
+//get actions to end game
+import {endGame} from '../redux/reducers/main/actions';
+import {resetGame} from '../redux/reducers/game/actions';
 
-import './Game.css';
+import './GameOver.css';
 
 
 // PROPS
@@ -24,15 +23,14 @@ interface OwnProps {
 //mutate redux state to props, using ownprops if neccesary
 const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
     return {
-        score: state.game.score,
-        card: state.game.card,
-        wrong: state.game.wrong,
+        cardName: state.game.card?.name
     }
 }
 
 //add dispatch actions to props
 const mapDispatchToProps = {
-
+    endGame,
+    resetGame,
 }
 
 //combine into connector to redux store, and get type
@@ -40,14 +38,14 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type ReduxProps = ConnectedProps<typeof connector>;
 
 //type of component props is intersection of non-redux and redux props
-type GameProps = OwnProps & ReduxProps;
+type GameOverProps = OwnProps & ReduxProps;
 
 
 //STATE
 ///////////////////////////////////////////////////////
 
 //type of internal component state
-interface GameState {
+interface GameOverState {
 
 }
 
@@ -56,26 +54,30 @@ interface GameState {
 ///////////////////////////////////////////////////////
 
 //create component using types
-class Game 
+class GameOver 
     extends React.Component 
-    <GameProps, GameState> {
+    <GameOverProps, GameOverState> {
 
         // constructor (props: GameProps) {
         //     super (props);
         // }
- 
+
+        restart = (): void => {
+            this.props.resetGame();
+            this.props.endGame();
+        }
+  
         render = (): JSX.Element => {
 
             return (
                 <div>
-                   <h2>Score: {this.props.score}</h2>
-                   {this.props.wrong ? (<GameOver/>) : null}
-                   {!this.props.wrong && !this.props.card ? (<LoadCard/>) : null} 
-                   {!this.props.wrong && this.props.card ? (<CardChoice/>) : null} 
+                    <h1>GAME OVER</h1>
+                    <h3>The card was: {this.props.cardName}</h3>
+                    <button onClick={this.restart}>RESET</button>
                 </div>
             );
         }
 }
 
 //combine with connector and export
-export default connector(Game);
+export default connector(GameOver);
