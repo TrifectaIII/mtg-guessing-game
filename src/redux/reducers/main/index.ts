@@ -1,16 +1,18 @@
-import {SELECT_DIFF, END_GAME, MainActionTypes} from './actionTypes'
+import {SELECT_DIFF, RESET_MAIN, FATAL_ERROR, MainActionTypes} from './actionTypes'
 import {Difficulties} from '../../../scryfall';
 
 //type of state slice
 interface MainState {
     difficulty: Difficulties | null
     playing: boolean
+    error: boolean
 }
 
 //starting state
 const initialState: MainState = {
     difficulty: null,
-    playing: false
+    playing: false,
+    error: false,
 }
 
 //handle actions
@@ -35,11 +37,13 @@ export default
                 return state;
             }
             
-        case END_GAME:
+        case RESET_MAIN:
+            return initialState;
+
+        case FATAL_ERROR:
             return {
                 ...state,
-                difficulty: null,
-                playing: false,
+                error: true,
             }
 
         default:

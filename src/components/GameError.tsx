@@ -8,7 +8,7 @@ import {GlobalState} from '../redux/store';
 import {resetMain} from '../redux/reducers/main/actions';
 import {resetGame} from '../redux/reducers/game/actions';
 
-import './GameOver.css';
+import './GameError.css';
 
 
 // PROPS
@@ -23,7 +23,7 @@ interface OwnProps {
 //mutate redux state to props, using ownprops if neccesary
 const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
     return {
-        cardName: state.game.card?.name
+        
     }
 }
 
@@ -38,14 +38,14 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type ReduxProps = ConnectedProps<typeof connector>;
 
 //type of component props is intersection of non-redux and redux props
-type GameOverProps = OwnProps & ReduxProps;
+type GameErrorProps = OwnProps & ReduxProps;
 
 
 //STATE
 ///////////////////////////////////////////////////////
 
 //type of internal component state
-interface GameOverState {
+interface GameErrorState {
 
 }
 
@@ -54,9 +54,9 @@ interface GameOverState {
 ///////////////////////////////////////////////////////
 
 //create component using types
-class GameOver 
+class GameError 
     extends React.Component 
-    <GameOverProps, GameOverState> {
+    <GameErrorProps, GameErrorState> {
 
         // constructor (props: GameProps) {
         //     super (props);
@@ -71,8 +71,7 @@ class GameOver
 
             return (
                 <div>
-                    <h1>GAME OVER</h1>
-                    <h3>The card was: {this.props.cardName}</h3>
+                    <h1>GAME ERROR</h1>
                     <button onClick={this.restart}>RESET</button>
                 </div>
             );
@@ -80,4 +79,4 @@ class GameOver
 }
 
 //combine with connector and export
-export default connector(GameOver);
+export default connector(GameError);

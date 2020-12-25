@@ -5,6 +5,7 @@ import {connect, ConnectedProps} from 'react-redux';
 import {GlobalState} from '../redux/store';
 
 //get dispatch actions
+import {fatalError} from '../redux/reducers/main/actions';
 import {nextCard} from '../redux/reducers/game/actions';
 
 //get difficulty types
@@ -35,6 +36,7 @@ const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
 //add dispatch actions to props
 const mapDispatchToProps = {
    nextCard,
+   fatalError,
 }
 
 //combine into connector to redux store, and get type
@@ -91,7 +93,8 @@ class LoadCard
             //make api call
             ScryfallRandom(format ? `is:booster+legal:${format}` : null)
                 .then ((response: any): Promise<ScryfallCard> => response.json())
-                .then ((card: ScryfallCard) => this.props.nextCard(card));
+                .then ((card: ScryfallCard) => this.props.nextCard(card))
+                .catch((error?: any) => this.props.fatalError());
         }
 
         render = (): JSX.Element => {

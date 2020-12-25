@@ -2,7 +2,8 @@ import {Difficulties} from '../../../scryfall';
 
 //types for actions
 export const SELECT_DIFF = 'main/SelectDiff';
-export const END_GAME = 'main/EndGame';
+export const RESET_MAIN = 'main/EndGame';
+export const FATAL_ERROR = 'main/FatalError';
 
 //types of actions
 interface SelectDiff {
@@ -10,9 +11,13 @@ interface SelectDiff {
     difficulty: Difficulties
 }
 
-interface EndGame {
-    type: typeof END_GAME
+interface ResetMain {
+    type: typeof RESET_MAIN
+}
+
+interface FatalError {
+    type: typeof FATAL_ERROR
 }
 
 //union all action types
-export type MainActionTypes = SelectDiff | EndGame;
+export type MainActionTypes = SelectDiff | ResetMain | FatalError;

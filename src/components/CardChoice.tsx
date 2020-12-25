@@ -4,6 +4,9 @@ import {connect, ConnectedProps} from 'react-redux';
 //get global state from redux
 import {GlobalState} from '../redux/store';
 
+//get dispatch actions
+import {fatalError} from '../redux/reducers/main/actions';
+
 //get scryfall info
 import {ScryfallCard, cardtypes, ScryfallRandom, ScryfallImageURL} from '../scryfall';
 
@@ -31,7 +34,7 @@ const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
 
 //add dispatch actions to props
 const mapDispatchToProps = {
-
+    fatalError,
 }
 
 //combine into connector to redux store, and get type
@@ -95,7 +98,8 @@ class CardChoice
                         this.setState({
                             cardNames: shuffle<string>(this.state.cardNames.concat([card.name])),
                         });
-                    });
+                    })
+                    .catch((error?: any) => this.props.fatalError());
             }
         }
  

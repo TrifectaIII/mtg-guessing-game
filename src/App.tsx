@@ -7,6 +7,7 @@ import {GlobalState} from './redux/store';
 //get components
 import ChooseDifficulty from './components/ChooseDifficulty';
 import Game from './components/Game';
+import GameError from './components/GameError';
 
 import './App.css';
 
@@ -24,6 +25,7 @@ interface OwnProps {
 const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
     return {
         playing: state.main.playing,
+        error: state.main.error,
     }
 }
 
@@ -65,8 +67,9 @@ class App
             return (
                 <div>
                     <h1>MTG Guessing Game</h1>
-                    {!this.props.playing ? (<ChooseDifficulty/>) : null}
-                    {this.props.playing ? (<Game/>) : null}
+                    {this.props.error ? (<GameError/>) : null}
+                    {!this.props.error && !this.props.playing ? (<ChooseDifficulty/>) : null}
+                    {!this.props.error && this.props.playing ? (<Game/>) : null}
                 </div>
             );
         }

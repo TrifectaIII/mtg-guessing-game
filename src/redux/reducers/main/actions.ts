@@ -1,4 +1,4 @@
-import {SELECT_DIFF, END_GAME, MainActionTypes} from './actionTypes';
+import {SELECT_DIFF, RESET_MAIN, FATAL_ERROR, MainActionTypes} from './actionTypes';
 import {Difficulties} from '../../../scryfall';
 
 //action dispatch functions for each action type
@@ -11,8 +11,14 @@ export const selectDiff = (difficulty: Difficulties): MainActionTypes => {
     }
 }
 
-export const endGame = (): MainActionTypes => {
+export const resetMain = (): MainActionTypes => {
     return {
-        type: END_GAME,
+        type: RESET_MAIN,
+    }
+}
+
+export const fatalError = (): MainActionTypes => {
+    return {
+        type: FATAL_ERROR,
     }
 }
