@@ -1,4 +1,5 @@
-import {SELECT_DIFF, END_GAME, Difficulties, MainActionTypes} from './actionTypes';
+import {SELECT_DIFF, END_GAME, MainActionTypes} from './actionTypes';
+import {Difficulties} from '../../../scryfall';
 
 //action dispatch functions for each action type
 // should match interface in actionTypes.ts

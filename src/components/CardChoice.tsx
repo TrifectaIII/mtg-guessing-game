@@ -4,17 +4,13 @@ import {connect, ConnectedProps} from 'react-redux';
 //get global state from redux
 import {GlobalState} from '../redux/store';
 
-//get type of scryfall cards
-import {ScryfallCard} from '../scryfall';
+//get scryfall info
+import {ScryfallCard, cardtypes, ScryfallRandom, ScryfallImageURL} from '../scryfall';
 
 //get component
 import ChoiceButton from './ChoiceButton';
 
 import './CardChoice.css';
-
-
-//all basic card types
-var cardtypes: string[] = ['Creature', 'Instant', 'Sorcery', 'Enchantment', 'Artifact', 'Land', 'Planeswalker'];
 
 
 // PROPS
@@ -91,12 +87,9 @@ class CardChoice
                 return false
             });
 
-            //generate url for fetch
-            var fetchURL: string = `https://api.scryfall.com/cards/random?q=is:booster+set:${setcode}${(type ? `+type:${type}` : '')}`;
-
             //fetch 3 more cards
             for (let i = 0; i < 3; i++) {
-                fetch(fetchURL)
+                ScryfallRandom(`is:booster+set:${setcode}${(type ? `+type:${type}` : '')}`)
                     .then((response): Promise<ScryfallCard> => response.json())
                     .then((card: ScryfallCard) => {
                         this.setState({
@@ -110,7 +103,7 @@ class CardChoice
             
             var imgURL: string | undefined = 
                 this.props.card ? 
-                `https://api.scryfall.com/cards/${this.props.card.id}/?format=image&version=art_crop` : 
+                ScryfallImageURL(this.props.card.id) : 
                 undefined;
 
             return (

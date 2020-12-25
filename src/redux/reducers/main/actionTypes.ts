@@ -1,14 +1,8 @@
+import {Difficulties} from '../../../scryfall';
+
 //types for actions
 export const SELECT_DIFF = 'main/SelectDiff';
 export const END_GAME = 'main/EndGame';
-
-//enum for different difficulties
-export enum Difficulties {
-    NONE = 'NONE',
-    STANDARD = 'STANDARD',
-    MODERN = 'MODERN',
-    VINTAGE = 'VINTAGE'
-}
 
 //types of actions
 interface SelectDiff {

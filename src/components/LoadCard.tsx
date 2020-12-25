@@ -8,10 +8,10 @@ import {GlobalState} from '../redux/store';
 import {nextCard} from '../redux/reducers/game/actions';
 
 //get difficulty types
-import {Difficulties} from '../redux/reducers/main/actionTypes';
+import {Difficulties} from '../scryfall';
 
-//get type of scryfall cards
-import {ScryfallCard} from '../scryfall';
+//get scryfall info
+import {ScryfallCard, ScryfallRandom} from '../scryfall';
 
 import './LoadCard.css';
 
@@ -69,30 +69,27 @@ class LoadCard
         componentDidMount = (): void => {
 
             //difficulty determines sf api query
-            var queryFormat: string = '';
+            var format: string | null = null;
             switch (this.props.difficulty) {
 
                 case Difficulties.STANDARD:
-                    queryFormat = 'standard';
+                    format = 'standard';
                     break;
                 
                 case Difficulties.MODERN:
-                    queryFormat = 'modern';
+                    format = 'modern';
                     break;
 
                 case Difficulties.VINTAGE:
-                    queryFormat = 'vintage';
+                    format = 'vintage';
                     break;
                 
                 default:
                     return;
             }
 
-            //generate api call
-            var fetchURL: string = `https://api.scryfall.com/cards/random?q=is:booster+legal:${queryFormat}`;
-
             //make api call
-            fetch(fetchURL)
+            ScryfallRandom(format ? `is:booster+legal:${format}` : null)
                 .then ((response: any): Promise<ScryfallCard> => response.json())
                 .then ((card: ScryfallCard) => this.props.nextCard(card));
         }

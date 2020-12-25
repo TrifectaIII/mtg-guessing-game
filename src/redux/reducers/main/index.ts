@@ -1,15 +1,15 @@
-import {SELECT_DIFF, END_GAME, Difficulties, MainActionTypes} from './actionTypes'
-
+import {SELECT_DIFF, END_GAME, MainActionTypes} from './actionTypes'
+import {Difficulties} from '../../../scryfall';
 
 //type of state slice
 interface MainState {
-    difficulty: Difficulties
+    difficulty: Difficulties | null
     playing: boolean
 }
 
 //starting state
 const initialState: MainState = {
-    difficulty: Difficulties.NONE,
+    difficulty: null,
     playing: false
 }
 
@@ -38,7 +38,7 @@ export default
         case END_GAME:
             return {
                 ...state,
-                difficulty: Difficulties.NONE,
+                difficulty: null,
                 playing: false,
             }
 

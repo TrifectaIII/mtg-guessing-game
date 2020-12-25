@@ -8,7 +8,7 @@ import {GlobalState} from '../redux/store';
 import {selectDiff} from '../redux/reducers/main/actions';
 
 //get difficulty types
-import {Difficulties} from '../redux/reducers/main/actionTypes';
+import {Difficulties} from '../scryfall';
 
 import './ChooseDifficulty.css';
 
