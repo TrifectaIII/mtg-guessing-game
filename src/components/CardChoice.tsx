@@ -99,7 +99,7 @@ class CardChoice
                             cardNames: shuffle<string>(this.state.cardNames.concat([card.name])),
                         });
                     })
-                    .catch((error?: any) => this.props.fatalError());
+                    .catch((error?: any) => this.props.fatalError('Error with Scryfall API Call'));
             }
         }
  
@@ -116,6 +116,11 @@ class CardChoice
                         src={imgURL}
                         alt="The card art"
                     />
+                    {
+                        this.props.card?.artist ? 
+                        (<p>Artist: {this.props.card.artist}</p>) : 
+                        null
+                    }
                     <br/>
                     {this.state.cardNames.length === 4 ? 
                         (removeDuplicates<string>(this.state.cardNames).map(

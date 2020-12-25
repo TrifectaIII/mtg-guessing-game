@@ -17,8 +17,9 @@ export const resetMain = (): MainActionTypes => {
     }
 }
 
-export const fatalError = (): MainActionTypes => {
+export const fatalError = (message: string): MainActionTypes => {
     return {
         type: FATAL_ERROR,
+        message,
     }
 }

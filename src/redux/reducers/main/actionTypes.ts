@@ -17,6 +17,7 @@ interface ResetMain {
 
 interface FatalError {
     type: typeof FATAL_ERROR
+    message: string
 }
 
 //union all action types

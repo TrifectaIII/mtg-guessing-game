@@ -23,7 +23,7 @@ interface OwnProps {
 //mutate redux state to props, using ownprops if neccesary
 const mapStateToProps = (state:GlobalState, ownProps: OwnProps) => {
     return {
-        
+        message: state.main.errorMessage,
     }
 }
 
@@ -72,6 +72,7 @@ class GameError
             return (
                 <div>
                     <h1>GAME ERROR</h1>
+                    <h2>{this.props.message}</h2>
                     <button onClick={this.restart}>RESET</button>
                 </div>
             );

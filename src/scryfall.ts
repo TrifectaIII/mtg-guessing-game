@@ -4,6 +4,7 @@ export interface ScryfallCard {
     id: string
     set: string
     type_line: string
+    artist?: string | null
     [key: string]: any,//allow any other properties it comes with
 }
 

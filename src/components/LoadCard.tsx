@@ -94,7 +94,7 @@ class LoadCard
             ScryfallRandom(format ? `is:booster+legal:${format}` : null)
                 .then ((response: any): Promise<ScryfallCard> => response.json())
                 .then ((card: ScryfallCard) => this.props.nextCard(card))
-                .catch((error?: any) => this.props.fatalError());
+                .catch((error?: any) => this.props.fatalError('Error with Scryfall API Call'));
         }
 
         render = (): JSX.Element => {

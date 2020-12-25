@@ -6,6 +6,7 @@ interface MainState {
     difficulty: Difficulties | null
     playing: boolean
     error: boolean
+    errorMessage: string
 }
 
 //starting state
@@ -13,6 +14,7 @@ const initialState: MainState = {
     difficulty: null,
     playing: false,
     error: false,
+    errorMessage: '',
 }
 
 //handle actions
@@ -37,14 +39,16 @@ export default
                 return state;
             }
             
-        case RESET_MAIN:
-            return initialState;
-
         case FATAL_ERROR:
             return {
                 ...state,
                 error: true,
+                errorMessage: action.message,
             }
+
+        case RESET_MAIN:
+            return initialState;
+
 
         default:
             return state;
