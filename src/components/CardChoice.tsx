@@ -78,7 +78,7 @@ class CardChoice
             this.setState({cardNames: [this.props.card.name]});
 
             //get setcode from card obj
-            var setcode: string = this.props.card.set;
+            // var setcode: string = this.props.card.set;
 
             //find type of card from type line
             var type: string | null = null;
@@ -89,10 +89,15 @@ class CardChoice
                 }
                 return false
             });
+    
+            var colors: string = this.props.card.color_identity.map((color) => {
+                return `color>=${color}`;
+            }).join('+OR+');
+            
 
             //fetch 3 more cards
             for (let i = 0; i < 3; i++) {
-                ScryfallRandom(`is:booster+set:${setcode}${(type ? `+type:${type}` : '')}`)
+                ScryfallRandom(`is:booster${(type ? `+type:${type}` : '')}${colors.length ? `+(${colors})` : null}`)
                     .then((response): Promise<ScryfallCard> => response.json())
                     .then((card: ScryfallCard) => {
                         this.setState({
