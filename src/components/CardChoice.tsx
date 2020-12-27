@@ -97,7 +97,7 @@ class CardChoice
 
             //fetch 3 more cards
             for (let i = 0; i < 3; i++) {
-                ScryfallRandom(`is:booster${(type ? `+type:${type}` : '')}${colors.length ? `+(${colors})` : '+(colors=C)'}`)
+                ScryfallRandom(`is:booster${(type ? `+type:${type}` : '')}${colors.length ? `+(${colors})` : '+color=C'}`)
                     .then((response): Promise<ScryfallCard> => response.json())
                     .then((card: ScryfallCard) => {
                         this.setState({
