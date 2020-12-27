@@ -71,9 +71,9 @@ class GameOver
 
             return (
                 <div>
-                    <h1>GAME OVER</h1>
+                    <h1>Game Over</h1>
                     <h3>The card was: {this.props.cardName}</h3>
-                    <button onClick={this.restart}>RESET</button>
+                    <button onClick={this.restart}>Reset</button>
                 </div>
             );
         }

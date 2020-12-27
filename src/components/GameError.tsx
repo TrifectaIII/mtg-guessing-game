@@ -71,9 +71,9 @@ class GameError
 
             return (
                 <div>
-                    <h1>GAME ERROR</h1>
+                    <h1>Fatal Error</h1>
                     <h2>{this.props.message}</h2>
-                    <button onClick={this.restart}>RESET</button>
+                    <button onClick={this.restart}>Reset</button>
                 </div>
             );
         }

@@ -97,7 +97,7 @@ class CardChoice
 
             //fetch 3 more cards
             for (let i = 0; i < 3; i++) {
-                ScryfallRandom(`is:booster${(type ? `+type:${type}` : '')}${colors.length ? `+(${colors})` : null}`)
+                ScryfallRandom(`is:booster${(type ? `+type:${type}` : '')}${colors.length ? `+(${colors})` : '+(colors=C)'}`)
                     .then((response): Promise<ScryfallCard> => response.json())
                     .then((card: ScryfallCard) => {
                         this.setState({
@@ -165,7 +165,7 @@ function shuffle <T> (array: T[]): T[] {
 function removeDuplicates <T> (array: T[]): T[] {
     var uniques: T[] = [];
     array.forEach((elem) => {
-        if (!uniques.includes(elem)) uniques.push(elem);
+        if (elem && !uniques.includes(elem)) uniques.push(elem);
     })
     return uniques;
 }

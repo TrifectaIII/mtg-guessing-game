@@ -76,12 +76,12 @@ class ChooseDifficulty
         render = (): JSX.Element => {
             return (
                 <div>
-                    <h2>CHOOSE DIFFICULTY:</h2>
-                    <button onClick={()=>this.props.selectDiff(Difficulties.STANDARD)}>STANDARD</button>
+                    <h2>Choose Difficulty:</h2>
+                    <button onClick={()=>this.props.selectDiff(Difficulties.STANDARD)}>Standard</button>
                     <br/>
-                    <button onClick={()=>this.props.selectDiff(Difficulties.MODERN)}>MODERN</button>
+                    <button onClick={()=>this.props.selectDiff(Difficulties.MODERN)}>Modern</button>
                     <br/>
-                    <button onClick={()=>this.props.selectDiff(Difficulties.VINTAGE)}>VINTAGE</button>
+                    <button onClick={()=>this.props.selectDiff(Difficulties.VINTAGE)}>Vintage</button>
                 </div>
             );
         }
