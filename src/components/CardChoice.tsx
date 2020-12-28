@@ -89,15 +89,41 @@ class CardChoice
                 }
                 return false
             });
+            const typeq = type ? `+type:${type}` : '';
     
-            var colors: string = this.props.card.color_identity.map((color) => {
+            //match colors
+            const colors: string = this.props.card.color_identity.map((color: string): string => {
                 return `color>=${color}`;
             }).join('+OR+');
+            var colorsq = colors.length ? `+(${colors})` : '+color=C';
+
+            //match creature types
+            var creaturetypesq: string = '';
+            if (type === 'creature') {
+                var creaturetypes: string[] = [];
+                const typeline: string = this.props.card?.type_line;
+                const typelines: string[] = typeline.split('//');
+                for (let i: number = 0; i < typelines.length; i++) {
+                    const tl: string = typelines[i];
+                    if (tl.includes('Creature')) {
+                        const ct = tl.split('—')[1].split(' ').filter((type: string):boolean => type.length > 0);
+                        creaturetypes = creaturetypes?.concat(ct);
+                    }
+                }
+                const creaturetypesCombined: string = creaturetypes.map((ct: string): string => {
+                    return `type=${ct}`;
+                }).join('+OR+')
+                creaturetypesq = `+(${creaturetypesCombined})`;
+                //dont search by color if searching by creature type
+                colorsq = '';
+                console.log(creaturetypes);
+            }
             
+
 
             //fetch 3 more cards
             for (let i = 0; i < 3; i++) {
-                ScryfallRandom(`is:booster${(type ? `+type:${type}` : '')}${colors.length ? `+(${colors})` : '+color=C'}`)
+                ScryfallRandom(`is:booster${typeq}${colorsq}${creaturetypesq}`)
                     .then((response): Promise<ScryfallCard> => response.json())
                     .then((card: ScryfallCard) => {
                         this.setState({
