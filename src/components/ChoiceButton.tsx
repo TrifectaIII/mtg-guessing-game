@@ -7,7 +7,7 @@ import {GlobalState} from '../redux/store';
 //get dispatch actions
 import {guessCard} from '../redux/reducers/game/actions';
 
-import './ChoiceButton.css';
+import './ChoiceButton.scss';
 
 
 // PROPS

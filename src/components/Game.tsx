@@ -9,7 +9,7 @@ import LoadCard from './LoadCard';
 import CardChoice from './CardChoice';
 import GameOver from './GameOver';
 
-import './Game.css';
+import './Game.scss';
 
 
 // PROPS

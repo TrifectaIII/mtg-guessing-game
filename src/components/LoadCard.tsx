@@ -14,7 +14,7 @@ import {Difficulties} from '../scryfall';
 //get scryfall info
 import {ScryfallCard, ScryfallRandom} from '../scryfall';
 
-import './LoadCard.css';
+import './LoadCard.scss';
 
 
 // PROPS

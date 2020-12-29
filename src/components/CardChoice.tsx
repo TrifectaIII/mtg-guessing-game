@@ -13,7 +13,7 @@ import {ScryfallCard, cardtypes, ScryfallRandom, ScryfallImageURL} from '../scry
 //get component
 import ChoiceButton from './ChoiceButton';
 
-import './CardChoice.css';
+import './CardChoice.scss';
 
 
 // PROPS

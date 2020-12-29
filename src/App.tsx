@@ -9,7 +9,7 @@ import ChooseDifficulty from './components/ChooseDifficulty';
 import Game from './components/Game';
 import GameError from './components/GameError';
 
-import './App.css';
+import './App.scss';
 
 
 // PROPS

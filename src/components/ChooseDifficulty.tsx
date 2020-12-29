@@ -10,7 +10,7 @@ import {selectDiff} from '../redux/reducers/main/actions';
 //get difficulty types
 import {Difficulties} from '../scryfall';
 
-import './ChooseDifficulty.css';
+import './ChooseDifficulty.scss';
 
 
 // PROPS
@@ -75,7 +75,7 @@ class ChooseDifficulty
 
         render = (): JSX.Element => {
             return (
-                <div>
+                <div className='ChooseDifficulty'>
                     <h2>Choose Difficulty:</h2>
                     <button onClick={()=>this.props.selectDiff(Difficulties.STANDARD)}>Standard</button>
                     <br/>

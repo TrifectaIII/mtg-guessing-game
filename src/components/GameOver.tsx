@@ -8,7 +8,7 @@ import {GlobalState} from '../redux/store';
 import {resetMain} from '../redux/reducers/main/actions';
 import {resetGame} from '../redux/reducers/game/actions';
 
-import './GameOver.css';
+import './GameOver.scss';
 
 
 // PROPS

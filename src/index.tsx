@@ -9,7 +9,7 @@ import store from './redux/store';
 //access main application component
 import App from './App';
 
-import './index.css';
+import './index.scss';
 
 
 //render whole app, while providing store to components
