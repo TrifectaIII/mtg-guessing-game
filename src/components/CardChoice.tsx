@@ -152,7 +152,6 @@ class CardChoice
                         (<p>Artist: {this.props.card.artist}</p>) : 
                         null
                     }
-                    <br/>
                     {this.state.cardNames.length === 4 ? 
                         (removeDuplicates<string>(this.state.cardNames).map(
                             (name: string): JSX.Element => {

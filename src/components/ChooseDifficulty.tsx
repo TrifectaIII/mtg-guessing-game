@@ -77,11 +77,11 @@ class ChooseDifficulty
             return (
                 <div className='ChooseDifficulty'>
                     <h2>Choose Difficulty:</h2>
-                    <button onClick={()=>this.props.selectDiff(Difficulties.STANDARD)}>Standard</button>
+                    <button className='standard' onClick={()=>this.props.selectDiff(Difficulties.STANDARD)}>Standard</button>
                     <br/>
-                    <button onClick={()=>this.props.selectDiff(Difficulties.MODERN)}>Modern</button>
+                    <button className='modern' onClick={()=>this.props.selectDiff(Difficulties.MODERN)}>Modern</button>
                     <br/>
-                    <button onClick={()=>this.props.selectDiff(Difficulties.VINTAGE)}>Vintage</button>
+                    <button className='vintage' onClick={()=>this.props.selectDiff(Difficulties.VINTAGE)}>Vintage</button>
                 </div>
             );
         }

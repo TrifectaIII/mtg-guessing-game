@@ -64,6 +64,7 @@ class ChoiceButton
             return (
                 <>
                     <button 
+                        className='choiceButton'
                         onClick={()=>this.props.guessCard(this.props.cardName)}
                     >
                         {this.props.cardName}
