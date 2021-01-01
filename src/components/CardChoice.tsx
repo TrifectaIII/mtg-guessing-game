@@ -51,6 +51,7 @@ type CardChoiceProps = OwnProps & ReduxProps;
 //type of internal component state
 interface CardChoiceState {
     cardNames: string[]
+    imageLoaded: boolean
 }
 
 
@@ -67,6 +68,7 @@ class CardChoice
 
             this.state = {
                 cardNames: [],
+                imageLoaded: false,
             } as CardChoiceState
         }
 
@@ -143,13 +145,20 @@ class CardChoice
 
             return (
                 <div>
+                    <p
+                        hidden={this.state.imageLoaded}
+                    >
+                        Loading Image...
+                    </p>
                     <img 
+                        hidden={!this.state.imageLoaded}
+                        onLoad={() => this.setState({imageLoaded: true})}
                         src={imgURL}
                         alt="The card art"
                     />
                     {
                         this.props.card?.artist ? 
-                        (<p>Artist: {this.props.card.artist}</p>) : 
+                        (<p hidden={!this.state.imageLoaded}>Artist: {this.props.card.artist}</p>) : 
                         null
                     }
                     {this.state.cardNames.length === 4 ? 

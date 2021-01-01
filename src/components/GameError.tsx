@@ -70,7 +70,7 @@ class GameError
         render = (): JSX.Element => {
 
             return (
-                <div>
+                <div className='gameError'>
                     <h1>Fatal Error</h1>
                     <h2>{this.props.message}</h2>
                     <button onClick={this.restart}>Reset</button>

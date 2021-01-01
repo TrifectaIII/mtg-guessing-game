@@ -70,7 +70,7 @@ class GameOver
         render = (): JSX.Element => {
 
             return (
-                <div>
+                <div className='gameOver'>
                     <h1>Game Over</h1>
                     <h3>The card was: {this.props.cardName}</h3>
                     <button onClick={this.restart}>Reset</button>
