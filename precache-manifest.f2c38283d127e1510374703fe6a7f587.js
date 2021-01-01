@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c43564638b44b72ab4ab3a9715cc3b02",
+    "revision": "7d830061b32b271e7425b3a367dafa7b",
     "url": "/mtg-guessing-game/index.html"
   },
   {
-    "revision": "adc4ca6d02aca0e42cc1",
-    "url": "/mtg-guessing-game/static/css/main.00c4e447.chunk.css"
+    "revision": "ae191058c1075828daee",
+    "url": "/mtg-guessing-game/static/css/main.b2e97de7.chunk.css"
   },
   {
     "revision": "6afca63a541c6165a1d0",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mtg-guessing-game/static/js/2.da9e665a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "adc4ca6d02aca0e42cc1",
-    "url": "/mtg-guessing-game/static/js/main.8a0bc8b5.chunk.js"
+    "revision": "ae191058c1075828daee",
+    "url": "/mtg-guessing-game/static/js/main.eff1b57a.chunk.js"
   },
   {
     "revision": "90fb4c886609e31e4b5b",
