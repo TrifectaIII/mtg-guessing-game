@@ -6,17 +6,25 @@ export interface ScryfallCard {
     type_line: string
     artist?: string | null
     color_identity: string[]
-    [key: string]: any,//allow any other properties it comes with
+    [key: string]: any//allow any other properties it comes with
 }
 
 //all basic card types
-export const cardtypes: string[] = ['Creature', 'Instant', 'Sorcery', 'Enchantment', 'Artifact', 'Land', 'Planeswalker'];
+export const cardtypes: string[] = [
+    'Creature', 
+    'Instant', 
+    'Sorcery', 
+    'Enchantment', 
+    'Artifact', 
+    'Land', 
+    'Planeswalker',
+];
 
 //enum for different difficulties
 export enum Difficulties {
     STANDARD = 'STANDARD',
     MODERN = 'MODERN',
-    VINTAGE = 'VINTAGE'
+    VINTAGE = 'VINTAGE',
 }
 
 export function ScryfallRandom(query: string | null) {

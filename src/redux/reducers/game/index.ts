@@ -12,14 +12,14 @@ interface GameState {
 const initialState: GameState = {
     card: null,
     score: 0,
-    wrong: false
+    wrong: false,
 }
 
 //handle actions
 export default 
     function (
         state: GameState = initialState, 
-        action: GameActionTypes
+        action: GameActionTypes,
     ): GameState {
 
     switch(action.type) {
