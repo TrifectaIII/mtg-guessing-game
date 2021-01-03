@@ -1,22 +1,24 @@
 {
   "files": {
     "main.css": "/mtg-guessing-game/static/css/main.b2e97de7.chunk.css",
-    "main.js": "/mtg-guessing-game/static/js/main.eff1b57a.chunk.js",
-    "main.js.map": "/mtg-guessing-game/static/js/main.eff1b57a.chunk.js.map",
-    "runtime-main.js": "/mtg-guessing-game/static/js/runtime-main.1500e4e4.js",
-    "runtime-main.js.map": "/mtg-guessing-game/static/js/runtime-main.1500e4e4.js.map",
-    "static/js/2.da9e665a.chunk.js": "/mtg-guessing-game/static/js/2.da9e665a.chunk.js",
-    "static/js/2.da9e665a.chunk.js.map": "/mtg-guessing-game/static/js/2.da9e665a.chunk.js.map",
+    "main.js": "/mtg-guessing-game/static/js/main.7fc8800c.chunk.js",
+    "main.js.map": "/mtg-guessing-game/static/js/main.7fc8800c.chunk.js.map",
+    "runtime-main.js": "/mtg-guessing-game/static/js/runtime-main.8294c3b2.js",
+    "runtime-main.js.map": "/mtg-guessing-game/static/js/runtime-main.8294c3b2.js.map",
+    "static/js/2.c6f39e71.chunk.js": "/mtg-guessing-game/static/js/2.c6f39e71.chunk.js",
+    "static/js/2.c6f39e71.chunk.js.map": "/mtg-guessing-game/static/js/2.c6f39e71.chunk.js.map",
+    "static/js/3.7cebd4d0.chunk.js": "/mtg-guessing-game/static/js/3.7cebd4d0.chunk.js",
+    "static/js/3.7cebd4d0.chunk.js.map": "/mtg-guessing-game/static/js/3.7cebd4d0.chunk.js.map",
     "index.html": "/mtg-guessing-game/index.html",
-    "precache-manifest.f2c38283d127e1510374703fe6a7f587.js": "/mtg-guessing-game/precache-manifest.f2c38283d127e1510374703fe6a7f587.js",
+    "precache-manifest.63cb5f407ea92785b2a3f8a59cb5c0ab.js": "/mtg-guessing-game/precache-manifest.63cb5f407ea92785b2a3f8a59cb5c0ab.js",
     "service-worker.js": "/mtg-guessing-game/service-worker.js",
     "static/css/main.b2e97de7.chunk.css.map": "/mtg-guessing-game/static/css/main.b2e97de7.chunk.css.map",
-    "static/js/2.da9e665a.chunk.js.LICENSE.txt": "/mtg-guessing-game/static/js/2.da9e665a.chunk.js.LICENSE.txt"
+    "static/js/2.c6f39e71.chunk.js.LICENSE.txt": "/mtg-guessing-game/static/js/2.c6f39e71.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.1500e4e4.js",
-    "static/js/2.da9e665a.chunk.js",
+    "static/js/runtime-main.8294c3b2.js",
+    "static/js/2.c6f39e71.chunk.js",
     "static/css/main.b2e97de7.chunk.css",
-    "static/js/main.eff1b57a.chunk.js"
+    "static/js/main.7fc8800c.chunk.js"
   ]
 }
