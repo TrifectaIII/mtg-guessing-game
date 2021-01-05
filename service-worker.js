@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/mtg-guessing-game/precache-manifest.63cb5f407ea92785b2a3f8a59cb5c0ab.js"
+  "/mtg-guessing-game/precache-manifest.6201e3ba48910247d8d39f8c2460981f.js"
 );
 
 self.addEventListener('message', (event) => {

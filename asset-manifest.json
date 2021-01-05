@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/mtg-guessing-game/static/css/main.b2e97de7.chunk.css",
-    "main.js": "/mtg-guessing-game/static/js/main.7fc8800c.chunk.js",
-    "main.js.map": "/mtg-guessing-game/static/js/main.7fc8800c.chunk.js.map",
-    "runtime-main.js": "/mtg-guessing-game/static/js/runtime-main.8294c3b2.js",
-    "runtime-main.js.map": "/mtg-guessing-game/static/js/runtime-main.8294c3b2.js.map",
+    "main.css": "/mtg-guessing-game/static/css/main.aa9272f0.chunk.css",
+    "main.js": "/mtg-guessing-game/static/js/main.1a8a7fb0.chunk.js",
+    "main.js.map": "/mtg-guessing-game/static/js/main.1a8a7fb0.chunk.js.map",
+    "runtime-main.js": "/mtg-guessing-game/static/js/runtime-main.6800af73.js",
+    "runtime-main.js.map": "/mtg-guessing-game/static/js/runtime-main.6800af73.js.map",
     "static/js/2.c6f39e71.chunk.js": "/mtg-guessing-game/static/js/2.c6f39e71.chunk.js",
     "static/js/2.c6f39e71.chunk.js.map": "/mtg-guessing-game/static/js/2.c6f39e71.chunk.js.map",
-    "static/js/3.7cebd4d0.chunk.js": "/mtg-guessing-game/static/js/3.7cebd4d0.chunk.js",
-    "static/js/3.7cebd4d0.chunk.js.map": "/mtg-guessing-game/static/js/3.7cebd4d0.chunk.js.map",
+    "static/js/3.84934e42.chunk.js": "/mtg-guessing-game/static/js/3.84934e42.chunk.js",
+    "static/js/3.84934e42.chunk.js.map": "/mtg-guessing-game/static/js/3.84934e42.chunk.js.map",
     "index.html": "/mtg-guessing-game/index.html",
-    "precache-manifest.63cb5f407ea92785b2a3f8a59cb5c0ab.js": "/mtg-guessing-game/precache-manifest.63cb5f407ea92785b2a3f8a59cb5c0ab.js",
+    "precache-manifest.6201e3ba48910247d8d39f8c2460981f.js": "/mtg-guessing-game/precache-manifest.6201e3ba48910247d8d39f8c2460981f.js",
     "service-worker.js": "/mtg-guessing-game/service-worker.js",
-    "static/css/main.b2e97de7.chunk.css.map": "/mtg-guessing-game/static/css/main.b2e97de7.chunk.css.map",
+    "static/css/main.aa9272f0.chunk.css.map": "/mtg-guessing-game/static/css/main.aa9272f0.chunk.css.map",
     "static/js/2.c6f39e71.chunk.js.LICENSE.txt": "/mtg-guessing-game/static/js/2.c6f39e71.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.8294c3b2.js",
+    "static/js/runtime-main.6800af73.js",
     "static/js/2.c6f39e71.chunk.js",
-    "static/css/main.b2e97de7.chunk.css",
-    "static/js/main.7fc8800c.chunk.js"
+    "static/css/main.aa9272f0.chunk.css",
+    "static/js/main.1a8a7fb0.chunk.js"
   ]
 }
