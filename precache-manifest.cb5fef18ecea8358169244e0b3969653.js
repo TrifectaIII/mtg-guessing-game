@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fe0c83220c0502c5149e0c71d4846073",
+    "revision": "ebdea0863a09d44335b01208a361e9d6",
     "url": "/mtg-guessing-game/index.html"
   },
   {
-    "revision": "99163c2f9436f9a10253",
+    "revision": "c174d35b7d960b050da4",
     "url": "/mtg-guessing-game/static/css/main.aa9272f0.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mtg-guessing-game/static/js/3.84934e42.chunk.js"
   },
   {
-    "revision": "99163c2f9436f9a10253",
-    "url": "/mtg-guessing-game/static/js/main.1a8a7fb0.chunk.js"
+    "revision": "c174d35b7d960b050da4",
+    "url": "/mtg-guessing-game/static/js/main.be544ac3.chunk.js"
   },
   {
     "revision": "cd2d68545e1329a50686",

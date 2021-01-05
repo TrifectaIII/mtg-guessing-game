@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/mtg-guessing-game/static/css/main.aa9272f0.chunk.css",
-    "main.js": "/mtg-guessing-game/static/js/main.1a8a7fb0.chunk.js",
-    "main.js.map": "/mtg-guessing-game/static/js/main.1a8a7fb0.chunk.js.map",
+    "main.js": "/mtg-guessing-game/static/js/main.be544ac3.chunk.js",
+    "main.js.map": "/mtg-guessing-game/static/js/main.be544ac3.chunk.js.map",
     "runtime-main.js": "/mtg-guessing-game/static/js/runtime-main.6800af73.js",
     "runtime-main.js.map": "/mtg-guessing-game/static/js/runtime-main.6800af73.js.map",
     "static/js/2.c6f39e71.chunk.js": "/mtg-guessing-game/static/js/2.c6f39e71.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.84934e42.chunk.js": "/mtg-guessing-game/static/js/3.84934e42.chunk.js",
     "static/js/3.84934e42.chunk.js.map": "/mtg-guessing-game/static/js/3.84934e42.chunk.js.map",
     "index.html": "/mtg-guessing-game/index.html",
-    "precache-manifest.6201e3ba48910247d8d39f8c2460981f.js": "/mtg-guessing-game/precache-manifest.6201e3ba48910247d8d39f8c2460981f.js",
+    "precache-manifest.cb5fef18ecea8358169244e0b3969653.js": "/mtg-guessing-game/precache-manifest.cb5fef18ecea8358169244e0b3969653.js",
     "service-worker.js": "/mtg-guessing-game/service-worker.js",
     "static/css/main.aa9272f0.chunk.css.map": "/mtg-guessing-game/static/css/main.aa9272f0.chunk.css.map",
     "static/js/2.c6f39e71.chunk.js.LICENSE.txt": "/mtg-guessing-game/static/js/2.c6f39e71.chunk.js.LICENSE.txt"
@@ -19,6 +19,6 @@
     "static/js/runtime-main.6800af73.js",
     "static/js/2.c6f39e71.chunk.js",
     "static/css/main.aa9272f0.chunk.css",
-    "static/js/main.1a8a7fb0.chunk.js"
+    "static/js/main.be544ac3.chunk.js"
   ]
 }
