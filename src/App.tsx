@@ -66,9 +66,8 @@ class App
 
             return (
                 <div>
-                    <p>Created by <a href='https://trifectaiii.github.io/'>Dakota Madden-Fong</a></p>
-                    <p>Uses the <a href='https://scryfall.com/docs/api'>Scryfall API</a></p>
-                    <br/>
+                    <p>Created by <a href='https://trifectaiii.github.io/'>Dakota Madden-Fong</a><br/>
+                    Uses the <a href='https://scryfall.com/docs/api'>Scryfall API</a></p>
                     <h1>MTG Guessing Game</h1>
                     {this.props.error ? (<GameError/>) : null}
                     {!this.props.error && !this.props.playing ? (<ChooseDifficulty/>) : null}
